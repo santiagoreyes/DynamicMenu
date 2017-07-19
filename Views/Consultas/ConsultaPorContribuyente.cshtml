@@ -1,0 +1,80 @@
+﻿@{
+    ViewBag.Title = "Factura Electrónica de Panamá";
+}
+
+@using PagedList.Mvc
+@using FePrototipo.Models
+@model  ConsultaPorContribuyenteSearchCriteria
+
+<div class="container">
+    <h2>Consulta por Contribuyentes</h2>
+    <hr />
+    <h4>Criterios</h4>
+    @using (Html.BeginForm("ConsultaPorContribuyente", "Consultas", FormMethod.Get))
+    {
+        <div class="row">
+            <div class="form-horizontal">
+                <div class="col-lg-2">
+                    @Html.TextBoxFor(m => m.Cufe, new { @class = "form-control", @placeholder = "CUFE" })
+                </div>
+                <div class="col-lg-2">
+                    @Html.TextBoxFor(m => m.RucEmisor, new { @class = "form-control", @placeholder = "RUC EMISOR" })
+                </div>
+                <div class="col-lg-2">
+                    @Html.TextBoxFor(m => m.RucReceptor, new { @class = "form-control", @placeholder = "RUC RECEPTOR" })
+                </div>
+                <div class="col-lg-2">
+                    @Html.DropDownListFor(m => m.TipoOperacion, ViewBag.TiposOperacion as SelectList, "- TIPO OPERACION -",
+                                            new { @class = "form-control", @placeholder = "TIPO OPERACION" })
+                </div>
+                <div class="col-lg-2">
+                    @Html.DropDownListFor(m => m.TipoDocumento, ViewBag.TiposDocumento as SelectList, "- TIPO DOCUMENTO -",
+                                            new { @class = "form-control", @placeholder = "TIPO OPERACION" })
+                </div>
+                <div class="col-lg-2">
+                    <button type="submit" class="btn btn-success">
+                        <span class="glyphicon glyphicon-search"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    }
+    <hr />
+    <p>Registros encontrados: @(Model.Resultado.TotalItemCount)</p>
+    <div class="row">
+        <table class="table" id="mensajes">
+            <tr>
+                <th>CUFE</th>
+                <th>Ruc Emisor</th>
+                <th>Ruc Receptor</th>
+                <th>Tipo Operación</th>
+                <th>Tipo Documento</th>
+                <th>Monto Impuestos</th>
+                <th>Ver Documento</th>
+            </tr>
+            @foreach (var item in Model.Resultado)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.Cufe)</td>
+                    <td>@Html.DisplayFor(modelItem => item.RucEmisor)</td>
+                    <td>@Html.DisplayFor(modelItem => item.RucReceptor)</td>
+                    <td>@Html.DisplayFor(modelItem => item.TipoOperacion)</td>
+                    <td>@Html.DisplayFor(modelItem => item.TipoDocumento)</td>
+                    <td class="text-center">@Html.DisplayFor(modelItem => item.MontoImpuestos)</td>
+
+                    <td><a href="@Url.Action("VerDocumentoAutorizado", "Consultas", new { id = item.ID })"><span class="glyphicon glyphicon-search"></a></td>
+                </tr>
+            }
+        </table>
+        <div id="container" style="margin-left: 20px">
+            <p></p>
+            <p></p>
+            <div class="pagination" style="margin-left: 400px">
+                Page @(Model.Resultado.PageCount < Model.Resultado.PageNumber ? 0 : Model.Resultado.PageNumber)
+                of @Model.Resultado.PageCount   @Html.PagedListPager(Model.Resultado, page => Url.Action("ConsultaDocumentoAutorizado", new { page }))
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,36 @@
+﻿@{
+    ViewBag.Title = "Factura Electrónica de Panamá";
+}
+
+
+@model  FEDAL.DocumentoAutorizado    
+
+<div class="container">
+    <h2>Documento Autorizado</h2>
+    <hr />
+    <div class="row">
+        <div class="col-sm-2" >CUFE</div>
+        <div class="col-sm-2" >@Model.Cufe</div>
+        <div class="col-sm-6">
+            <a href="/static/FacturaEjemplo.html" class="btn btn-info btn-sm">
+                <span class="glyphicon glyphicon-search"></span> Ver Documento
+            </a>
+        </div>
+    </div><hr />
+    <div class="row">
+        <div class="col-sm-2">Recibido en</div>
+        <div class="col-sm-10" >@Model.FechaHoraAutorizacion</div>
+    </div><hr />
+    <div class="row">
+        <div class="col-sm-2">Tipo Operacion</div>
+        <div class="col-sm-10" >@Model.TipoOperacion</div>
+    </div><hr />
+    <div class="row">
+        <div class="col-sm-2">Tipo Documento</div>
+        <div class="col-sm-8" >@Model.TipoDocumento</div>
+
+    </div>
+
+
+
+</div>

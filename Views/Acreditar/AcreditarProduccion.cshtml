@@ -1,0 +1,29 @@
+﻿@{
+    ViewBag.Title = "Factura Electrónica de Panamá";
+}
+
+@using FePrototipo.Models
+@model SolicitudProduccion
+
+<div class="container">
+    <h2>Solicitar Acreditación en Ambiente de Producción</h2>
+    @if (ViewBag.Mensaje!=null) { 
+    <div class="alert alert-success">
+        <strong>Exito!</strong> @ViewBag.Mensaje
+    </div>
+    }
+    <div class="panel-body">
+        @using (Html.BeginForm("AcreditarProduccion", "Acreditar", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+        {
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.AntiForgeryToken()
+            <fieldset>
+                <div class="form-group">
+                    @Html.EditorFor(m => m.FechaPrevistaInicio, new { @class = "form-control datepicker", placeholder = "Fecha Inicio Prevista" })
+                    @Html.ValidationMessageFor(m => m.FechaPrevistaInicio, "", new { @class = "text-danger" })
+                </div>
+                <input type="submit" value="Continuar" class="btn btn-lg btn-primary btn-block" />
+            </fieldset>
+        }
+    </div>
+</div>

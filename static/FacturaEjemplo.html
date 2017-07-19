@@ -1,0 +1,299 @@
+﻿<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" type="text/css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/javascript"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" type="text/javascript"></script>
+    <style>
+            @media only screen and (max-width: 800px) {
+
+                /* Force table to not be like tables anymore */
+                #tabla-responsiva table,
+                #tabla-responsiva thead,
+                #tabla-responsiva tbody,
+                #tabla-responsiva th,
+                #tabla-responsiva td,
+                #tabla-responsiva tr {
+                    display: block;
+                }
+
+                    /* Hide table headers (but not display: none;, for accessibility) */
+                    #tabla-responsiva thead tr {
+                        position: absolute;
+                        top: -9999px;
+                        left: -9999px;
+                    }
+
+                #tabla-responsiva tr {
+                    border: 1px solid #ccc;
+                }
+
+                #tabla-responsiva td {
+                    /* Behave  like a "row" */
+                    border: none;
+                    border-bottom: 1px solid #eee;
+                    position: relative;
+                    padding-left: 50%;
+                    white-space: normal;
+                    text-align: left;
+                }
+
+                    #tabla-responsiva td:before {
+                        /* Now like a table header */
+                        position: absolute;
+                        /* Top/left values mimic padding */
+                        top: 6px;
+                        left: 6px;
+                        width: 45%;
+                        padding-right: 10px;
+                        white-space: nowrap;
+                        text-align: left;
+                        font-weight: bold;
+                    }
+
+                    /*
+        Label the data
+        */
+                    #tabla-responsiva td:before {
+                        content: attr(data-title);
+                    }
+    </style>
+    <title>Factura Electrónica</title>
+</head>
+<body>
+    <div class="container-fluid">
+        <br />
+        <a href="javascript:history.back()">Regresar</a>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-sm-4 text-left">
+                                <h5>No. 1000024</h5>
+                            </div>
+                            <div class="col-sm-4 text-center">
+                                <h4><strong>FACTURA</strong></h4>
+                            </div>
+                            <div class="col-sm-4 text-right">
+                                <h5>2017-07-23 08:14</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-sm-2">
+                                <img class="img-responsive" src="logo.ejemplo.png"
+                                     alt="Logo" height="100" width="100" />
+                            </div>
+                            <div class="col-sm-8">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <dl class="dl-vertical">
+                                            <dt class="small">CÓDIGO ÚNICO DE FACTURA ELECTRÓNICA [CUFE]</dt>
+                                            <dd>9219-2190-2102-192-01-012</dd>
+                                        </dl>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <dl class="dl-vertical">
+                                            <dt class="small">CÓDIGO AUTORIZACIÓN</dt>
+                                            <dd>12712721-12-212</dd>
+                                        </dl>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <dl class="dl-vertical">
+                                            <dt class="small">MODALIDAD EMISIÓN</dt>
+                                            <dd>NORMAL</dd>
+                                        </dl>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <dl class="dl-vertical">
+                                            <dt class="small">FECHA AUTORIZACIÓN</dt>
+                                            <dd>2017-07-12T08:09:10</dd>
+                                        </dl>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-2">
+                                <img class="img-responsive" src="qrcode.ejemplo.png" alt="Qr Code" height="100" width="100" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        EMISOR
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <dl class="dl-vertical">
+                                    <dt class="small">RUC</dt>
+                                    <dd>121212-2-212121</dd>
+                                </dl>
+                            </div>
+                            <div class="col-sm-6">
+                                <dl class="dl-vertical">
+                                    <dt class="small">NOMBRE</dt>
+                                    <dd>DISTRIBUIDORA ENORME S.A.</dd>
+                                </dl>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <dl class="dl-vertical">
+                                    <dt class="small">DIRECCIÓN</dt>
+                                    <dd>Av Del Sitio Escondido y la que cruza</dd>
+                                </dl>
+                            </div>
+                            <div class="col-sm-6">
+                                <dl class="dl-vertical">
+                                    <dt class="small">TELÉFONO</dt>
+                                    <dd>234-2323</dd>
+                                </dl>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                RECEPTOR
+                            </div>
+                            <div class="col-sm-4">
+                                <kbd>CONTRIBUYENTE</kdb>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <dl class="dl-vertical">
+                                    <dt class="small">RUC</dt>
+                                    <dd>8-NT-12121</dd>
+                                </dl>
+                            </div>
+                            <div class="col-sm-6">
+                                <dl class="dl-vertical">
+                                    <dt class="small">NOMBRE</dt>
+                                    <dd>MINORISTA SUPER.</dd>
+                                </dl>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <dl class="dl-vertical">
+                                    <dt class="small">DIRECCIÓN</dt>
+                                    <dd>Calle Principal No. 1221</dd>
+                                </dl>
+                            </div>
+                            <div class="col-sm-6">
+                                <dl class="dl-vertical">
+                                    <dt class="small">TELÉFONO</dt>
+                                    <dd>534-2323</dd>
+                                </dl>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div data-toggle="collapse" data-target="#detalle">Detalle <span class="glyphicon glyphicon-th-list" /></div>
+                    </div>
+                    <div class="panel-body collapse in" id="detalle">
+                        <table class="table" id="tabla-responsiva">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">Código</th>
+                                    <th class="text-center">Descripción</th>
+                                    <th class="text-center">Cantidad</th>
+                                    <th class="text-right">Precio Unidad</th>
+                                    <th class="text-right">Monto</th>
+                                    <th class="text-right">Impuesto</th>
+                                    <th class="text-right">Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td data-title="Código" class="text-center">0101</td>
+                                    <td data-title="Descripción" class="text-left">Cerveza Caja</td>
+                                    <td data-title="Cantidad" class="text-center">10</td>
+                                    <td data-title="Precio" class="text-right">10.00</td>
+                                    <td data-title="Monto" class="text-right">100.00</td>
+                                    <td data-title="Impuesto" class="text-right">15.00</td>
+                                    <td data-title="Total" class="text-right">115.00</td>
+                                </tr>
+                                <tr>
+                                    <td data-title="Código" class="text-center">0102</td>
+                                    <td data-title="Descripción" class="text-left">Vino Caja</td>
+                                    <td data-title="Cantidad" class="text-center">20</td>
+                                    <td data-title="Precio" class="text-right">10.00</td>
+                                    <td data-title="Monto" class="text-right">200.00</td>
+                                    <td data-title="Impuesto" class="text-right">30.00</td>
+                                    <td data-title="Total" class="text-right">230.00</td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td class="text-right" colspan="4">Totales</td>
+                                    <td data-title="Monto:" class="text-right"><strong>300.00<strong></td>
+                                    <td data-title="Impuesto: " class="text-right"><strong>45.00<strong></td>
+                                    <td data-title="Total:   " class="text-right"><strong>345.00<strong></td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        REFERENCIAS / OBSERVACIONES
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-sm-2">
+                                <dl class="dl-vertical">
+                                    <dt class="small">Tipo Ref.</dt>
+                                    <dd>ORDEN DE COMPRA</dd>
+                                </dl>
+                            </div>
+                            <div class="col-sm-2">
+                                <dl class="dl-vertical">
+                                    <dt class="small">No. Ref.</dt>
+                                    <dd>OC-2017-23-00010A</dd>
+                                </dl>
+                            </div>
+                            <div class="col-sm-8">
+                                <dl class="dl-vertical">
+                                    <dt class="small">Observaciones</dt>
+                                    <dd>Garantia de 60 dias y descuento de 10% si cancela antes de los 15 primeros dias del mes.</dd>
+                                </dl>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>

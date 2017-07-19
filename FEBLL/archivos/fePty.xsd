@@ -1,0 +1,275 @@
+<?xml version="1.0"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" 
+           xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:sig="http://www.w3.org/2000/09/xmldsig#">
+  <xs:element name="ptyDE">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="infoGeneral">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element type="xs:integer" name="version"/>
+              <xs:element type="ambiente" name="ambiente"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="factura">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="identificacion">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type="tipoDocumento" name="tipoDocumento"/>
+                    <xs:element type="tipoFactura" name="tipoFactura"/>
+                    <xs:element type="tipoOperacion" name="tipoOperacion"/>
+                    <xs:element type="codigoUnicoDocumento" name="codigoUnicoDocumento"/>
+                    <xs:element type="fechaHora" name="fechaHoraEmision"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="emisor">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type="ruc" name="ruc"/>
+                    <xs:element type="dv" name="dv"/>
+                    <xs:element type="xs:string" name="razonSocial"/>
+                    <xs:element type="xs:string" name="direccion"/>
+                    <xs:element type="xs:string" name="provincia"/>
+                    <xs:element type="xs:string" name="distrito"/>
+                    <xs:element type="xs:string" name="corregimiento"/>
+                    <xs:element type="telefono" name="telefono"/>
+                    <xs:element type="xs:string" name="nombreComercial"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="puntoEmision">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type="xs:byte" name="codigoSucursal"/>
+                    <xs:element type="xs:string" name="direccionSucursal"/>
+                    <xs:element type="xs:string" name="provincia"/>
+                    <xs:element type="xs:string" name="distrito"/>
+                    <xs:element type="xs:string" name="corregimiento"/>
+                    <xs:element type="xs:string" name="codigoPuntoFacturacion"/>
+                    <xs:element type="xs:string" name="operador"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="receptor">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type="ruc" name="ruc"/>
+                    <xs:element type="dv" name="dv"/>
+                    <xs:element type="xs:string" name="razonSocial"/>
+                    <xs:element type="xs:string" name="direccion"/>
+                    <xs:element type="xs:string" name="provincia"/>
+                    <xs:element type="xs:string" name="distrito"/>
+                    <xs:element type="xs:string" name="corregimiento"/>
+                    <xs:element type="telefono" name="telefono"/>
+                    <xs:element type="xs:string" name="nombreComercial"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="detalles">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="detalle" maxOccurs="unbounded" minOccurs="0">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element type="xs:byte" name="numero"/>
+                          <xs:element type="xs:string" name="descripcion"/>
+                          <xs:element type="unidadMedida" name="unidadMedida"/>
+                          <xs:element type="xs:nonNegativeInteger" name="cantidad"/>
+                          <xs:element type="monto" name="precioUnitario"/>
+                          <xs:element type="monto" name="precioConDescuento"/>
+                          <xs:element type="monto" name="subtotalSinImpuesto"/>
+                          <xs:element type="codigoImpuesto" name="codigoImpuesto"/>
+                          <xs:element type="porcentajeImpuesto" name="porcentajeImpuesto"/>
+                          <xs:element type="monto" name="montoImpuesto"/>
+                          <xs:element type="monto" name="subtotalConImpuesto"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="pago">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type="xs:string" name="formaPago"/>
+                    <xs:element type="xs:float" name="efectivo"/>
+                    <xs:element type="xs:float" name="tarjeta"/>
+                    <xs:element type="xs:float" name="otros"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="totales">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type="monto" name="descuento"/>
+                    <xs:element type="monto" name="subtotalExento"/>
+                    <xs:element type="monto" name="subtotalImpuesto"/>
+                    <xs:element type="monto" name="subtotal"/>
+                    <xs:element type="impuestos" name="impuestos"/>
+                    <xs:element type="monto" name="isrTotal"/>
+                    <xs:element type="monto" name="itbmsTotal"/>
+                    <xs:element type="monto" name="retencionContractual"/>
+                    <xs:element type="monto" name="retencionItbms"/>
+                    <xs:element type="monto" name="retencionRenta"/>
+                    <xs:element type="monto" name="total"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="referencias">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="referencia">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type="xs:string" name="tipoDocumentoReferencia"/>
+                    <xs:element type="xs:string" name="numeroDocumentoReferencia"/>
+                    <xs:element type="xs:string" name="descripcion"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="datosAdicionales">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="dato" maxOccurs="unbounded" minOccurs="0">
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="xs:string">
+                      <xs:attribute type="xs:string" name="nombre" use="optional"/>
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="firmas" type="firmas"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+
+  <xs:complexType name="firmas">
+    <xs:sequence minOccurs="0" maxOccurs="2">
+      <xs:element name="firmaEmisor" type="xs:string"/>
+      <xs:element name="firmaDGI" type="xs:string"/>
+      <!--
+      <xs:element ref="sig:Signature" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="es">Datos que garantizarán la autoría y la integridad de la factura.  </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      -->
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="impuestos">
+      <xs:sequence minOccurs="1" maxOccurs="unbounded">
+	  	<xs:element  type="impuesto" name="impuesto"/>
+	  </xs:sequence>
+ </xs:complexType>
+ <xs:complexType name="impuesto">
+      <xs:sequence minOccurs="1" maxOccurs="1">
+	  	<xs:element  type="codigoImpuesto" name="codigo"/>
+		<xs:element  type="porcentajeImpuesto" name="porcentaje"/>
+		<xs:element  type="monto" name="montoImpuesto"/>
+	  </xs:sequence>
+ </xs:complexType>
+  <xs:simpleType name="monto">
+      <xs:restriction base="xs:decimal">
+         <xs:fractionDigits value="2"/>
+      </xs:restriction>
+</xs:simpleType>
+ <xs:simpleType name="codigoImpuesto">
+      <xs:restriction base="xs:string">
+         <xs:enumeration value="EXENTO"/>
+		 <xs:enumeration value="ITBMS_7"/>
+		 <xs:enumeration value="ITBMS_10"/>
+		 <xs:enumeration value="ITBMS_15"/>
+		 <xs:enumeration value="ISR"/>
+		</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="porcentajeImpuesto">
+      <xs:restriction base="xs:decimal">
+         <xs:fractionDigits value="2"/>
+		 <xs:totalDigits value="2"/>
+      </xs:restriction>
+</xs:simpleType>
+
+<xs:simpleType name="tipoDocumento">
+      <xs:restriction base="xs:string">
+         <xs:enumeration value="FACTURA"/>
+		 <xs:enumeration value="NOTA_CREDITO"/>
+		 <xs:enumeration value="NOTA_DEBITO"/>
+		 <xs:enumeration value="ANULACION"/>
+	</xs:restriction>
+</xs:simpleType>
+
+<xs:simpleType name="tipoFactura">
+      <xs:restriction base="xs:string">
+         <xs:enumeration value="FACTURA"/>
+		 <xs:enumeration value="FACTURA_EXPORTACION"/>
+		 <xs:enumeration value="FACTURA_ZONA_FRANCA"/>
+	</xs:restriction>
+</xs:simpleType>
+
+  <xs:simpleType name="tipoOperacion">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="B2B"/>
+      <xs:enumeration value="B2C"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+<xs:simpleType name="ambiente">
+      <xs:restriction base="xs:string">
+         <xs:enumeration value="PRUEBAS"/>
+		 <xs:enumeration value="PRODUCCION"/>
+	</xs:restriction>
+</xs:simpleType>
+
+<xs:simpleType name="codigoUnicoDocumento">
+      <xs:restriction base="xs:string">
+		 <xs:length value="10"/>
+      </xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="codigoUnicoAutorizacion">
+      <xs:restriction base="xs:string">
+		 <xs:length value="10"/>
+      </xs:restriction>
+</xs:simpleType>
+
+<xs:simpleType name="ruc">
+      <xs:restriction base="xs:string">
+		</xs:restriction>
+</xs:simpleType>
+
+<xs:simpleType name="dv">
+      <xs:restriction base="xs:string">
+		 <xs:length value="2"/>
+      </xs:restriction>
+</xs:simpleType>
+
+<xs:simpleType name="telefono">
+      <xs:restriction base="xs:string">
+		 <xs:pattern value="\d{3}-\d{4}"/>
+      </xs:restriction>
+</xs:simpleType>
+
+<xs:simpleType name="fechaHora">
+      <xs:restriction base="xs:dateTime">
+      </xs:restriction>
+</xs:simpleType>
+
+<xs:simpleType name="unidadMedida">
+      <xs:restriction base="xs:string">
+      </xs:restriction>
+</xs:simpleType>
+</xs:schema>

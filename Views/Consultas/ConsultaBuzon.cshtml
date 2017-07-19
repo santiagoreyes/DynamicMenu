@@ -1,0 +1,63 @@
+﻿@{
+    ViewBag.Title = "Factura Electrónica de Panamá";
+}
+
+@using PagedList.Mvc
+@using FePrototipo.Models
+@model  BuzonSearchCriteria    
+
+<div class="container">
+    <h2>Consulta Buzon</h2>
+    <hr />
+    <h4>Criterios</h4>
+       @using (Html.BeginForm("ConsultaBuzon", "Consultas", FormMethod.Get))
+    {
+        <div class="row">
+            <div class="form-horizontal">
+                <div class="col-lg-3">
+                    @Html.TextBoxFor(m => m.Cufe, new { @class = "form-control", @placeholder = "CUFE" })
+                </div>
+                <div class="col-lg-3">
+                    @Html.DropDownListFor(m => m.Estado, ViewBag.Estados as SelectList, "- ESTADO -",
+                                            new { @class = "form-control", @placeholder = "ESTADO" })
+                </div>
+                <div class="col-lg-3">
+                    <button type="submit" class="btn btn-success">
+                        <span class="glyphicon glyphicon-search"></span>
+                    </button>
+                    </div>
+                </div>
+        </div>
+
+    }      
+    <hr/>
+    <p>Registros encontrados: @(Model.Resultado.TotalItemCount)</p>
+            <div class="row">
+                <table class="table" id="mensajes">
+                    <tr>
+                        <th>CUFE</th>
+                        <th>Fecha</th>
+                        <th>Estado</th>
+                        <th>Mensaje</th>
+                    </tr>
+                    @foreach (var item in Model.Resultado)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => item.Cufe)</td>
+                            <td>@Html.DisplayFor(modelItem => item.FechaHora)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Estado)</td>
+                            <td><a href="@Url.Action("VerMensajeBuzon", "Consultas", new { id = item.ID })"><span class="glyphicon glyphicon-search"></a></td>
+                        </tr>
+                    }
+                </table>
+                <div id="container" style="margin-left: 20px">
+                    <p></p>
+                    <p></p>
+                    <div class="pagination" style="margin-left: 400px">
+                        Page @(Model.Resultado.PageCount < Model.Resultado.PageNumber ? 0 : Model.Resultado.PageNumber)
+                        of @Model.Resultado.PageCount   @Html.PagedListPager(Model.Resultado, page => Url.Action("ConsultaBuzon", new { page }))
+                    </div>
+                </div>
+            </div>
+    </div>
+

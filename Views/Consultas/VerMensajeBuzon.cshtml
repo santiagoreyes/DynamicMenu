@@ -1,0 +1,32 @@
+﻿@{
+    ViewBag.Title = "Factura Electrónica de Panamá";
+}
+
+
+@model  FEDAL.Buzon    
+
+<div class="container">
+    <h2>Mensaje</h2>
+    <hr />
+    <div class="row">
+        <div class="col-sm-2" >CUFE</div>
+        <div class="col-sm-10" >@Model.Cufe</div>
+    </div><hr />
+    <div class="row">
+        <div class="col-sm-2">Recibido en</div>
+        <div class="col-sm-10" >@Model.FechaHora</div>
+    </div><hr />
+    <div class="row">
+        <div class="col-sm-2">Estado</div>
+        <div class="col-sm-10" >@Model.Estado</div>
+    </div><hr />
+    <div class="row">
+        <div class="col-sm-2">Mensaje Recibido</div>
+        <div class="col-sm-10" >@Model.MensajeEntrada</div>
+    </div>
+    <div class="row">
+        <div class="col-sm-2">Mensaje Respuesta</div>
+        <div class="col-sm-10">@Model.MensajeRespuesta</div>
+    </div>
+
+</div>

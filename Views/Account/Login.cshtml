@@ -1,0 +1,64 @@
+﻿@model DynamicMenu.Models.LoginViewModel
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+
+<style>
+    .form-signin {
+        margin: 0 auto;
+        max-width: 330px;
+        padding: 15px;
+    }
+    .login {
+        padding-top: 40px;
+    }
+</style>
+
+<br />
+
+<div class="login">
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+            <div class="alert alert-info">
+                <p>Ingrese con las credenciales de acceso de eTax 2.0, 
+            Ejemplo: RUC: 1-1-1, NIT: 12345</p>
+                
+            </div>
+            <div class="login-panel panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Ingrese sus credenciales</h3>
+                </div>
+                <div class="panel-body">
+                    @using (Html.BeginForm("Login", "Account", FormMethod.Post, new { @class = "form-signin", role = "form" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <fieldset>
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="form-group">
+                                @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", placeholder = "RUC o Usuario" })
+                                @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group">
+                                @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "NIT o clave" })
+                                @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    @Html.CheckBoxFor(m => m.RememberMe)Recordarme
+                                </label>
+                            </div>
+                            <input type="submit" value="Inicio" class="btn btn-lg btn-primary btn-block" />
+                        </fieldset>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+

@@ -1,0 +1,25 @@
+﻿@{
+    ViewBag.Title = "Factura Electrónica de Panamá";
+}
+
+@model IEnumerable<FEDAL.Buzon>
+
+<div class="container">
+    <h2>Consulta Facturas Emitidas</h2>
+
+    <table class="table">
+        <tr>
+            <th>CUFE</th>
+            <th>Fecha</th>
+            <th>Estado</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.Cufe)</td>
+                <td>@Html.DisplayFor(modelItem => item.FechaHora)</td>
+                <td>@Html.DisplayFor(modelItem => item.Estado)</td>
+            </tr>
+        }
+    </table>
+</div>
